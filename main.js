@@ -1,33 +1,15 @@
-const { app, BrowserWindow } = require('electron')
+const {app} = require('electron');
+const Window = require('./src/window');
 
-function createWindow () {
-    const win = new BrowserWindow({
-        // width: 1740,
-        width: 1760,
-        // height: 960,
-        height: 950,
-        resizable: false,
-        webPreferences: {
-            javascript: true,
-            webgl: true,
-            nodeIntegration: true,
-            webviewTag: true
-        }
-})
-
-    win.loadFile('index.html');
+function main() {
+    const file = './renderer/index.html';
+    let mainWindow = new Window({
+        file: file
+    })
 }
 
-app.whenReady().then(createWindow);
+app.on('ready', main);
 
-app.on('window-all-closed', () => {
-    if (process.platform !== 'darwin') {
-        app.quit();
-    }
-});
-
-app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-        createWindow();
-    }
+app.on('window-all-closed', function () {
+    app.quit();
 });

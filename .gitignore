@@ -1,4 +1,6 @@
 node_modules
 package-lock.json
 .idea
-hsu-desktop-win32-x64/
+hsu-desktop-win32-x64
+hsu-desktop-win32-x64.rar
+_hsu-desktop-win32-x64.rar
